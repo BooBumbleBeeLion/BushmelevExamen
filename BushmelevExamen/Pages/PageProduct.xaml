@@ -1,0 +1,44 @@
+﻿<Page x:Class="BushmelevExamen.Pages.PageProduct"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BushmelevExamen.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageProduct">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="101*"></ColumnDefinition>
+            <ColumnDefinition Width="299*"/>
+            <ColumnDefinition Width="200*"></ColumnDefinition>
+            <ColumnDefinition Width="200*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="txtBlockItemsCount" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBox x:Name="txtBoxSearch" Grid.Column="1" Margin="5,5,5,5" TextChanged="txtBoxSearch_TextChanged"></TextBox>
+        <ComboBox x:Name="cmBoxSort" Grid.Column="2" Margin="5,5,5,5" SelectionChanged="cmBoxSort_SelectionChanged"></ComboBox>
+        <ComboBox x:Name="cmBoxFilter" Grid.Column="3" Margin="5,5,5,5" SelectionChanged="cmBoxFilter_SelectionChanged"></ComboBox>
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="4">
+            <Viewbox VerticalAlignment="Top">
+                <ListBox x:Name="listBoxProducts" Background="Transparent" BorderThickness="0">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <ContentPresenter/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Viewbox>
+        </ScrollViewer>
+    </Grid>
+</Page>

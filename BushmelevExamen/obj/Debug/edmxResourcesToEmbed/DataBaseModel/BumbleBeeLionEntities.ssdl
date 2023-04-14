@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище BumbleBeeLionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderStatus" Type="int" Nullable="false" />
+    <Property Name="OrderPickupPoint" Type="int" Nullable="false" />
+    <Property Name="OrderFIO" Type="nvarchar" MaxLength="100" />
+    <Property Name="OrderDeliveryDate" Type="datetime" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="OrderCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderProduct">
+    <Key>
+      <PropertyRef Name="OrderProduct" />
+    </Key>
+    <Property Name="OrderProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="ProductArticleNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ProductCount" Type="int" />
+  </EntityType>
+  <EntityType Name="OrderStatus">
+    <Key>
+      <PropertyRef Name="OrderStatusID" />
+    </Key>
+    <Property Name="OrderStatusID" Type="int" Nullable="false" />
+    <Property Name="OrderStatusName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PickupPoint">
+    <Key>
+      <PropertyRef Name="PickupPointID" />
+    </Key>
+    <Property Name="PickupPointID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PickupPointIndex" Type="int" Nullable="false" />
+    <Property Name="PickupPointCity" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PickupPointStreet" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PickupPointNumberStreet" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductArticleNumber" />
+    </Key>
+    <Property Name="ProductArticleNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ProductName" Type="int" Nullable="false" />
+    <Property Name="ProductUnit" Type="int" Nullable="false" />
+    <Property Name="ProductCategory" Type="int" Nullable="false" />
+    <Property Name="ProductSupplier" Type="int" Nullable="false" />
+    <Property Name="ProductManufacturer" Type="int" Nullable="false" />
+    <Property Name="ProductDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProductCost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ProductMaxDiscountAmount" Type="tinyint" />
+    <Property Name="ProductDiscountAmount" Type="tinyint" />
+    <Property Name="ProductQuantityInStock" Type="int" Nullable="false" />
+    <Property Name="ProductPhoto" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ProductCategoryID" />
+    </Key>
+    <Property Name="ProductCategoryID" Type="int" Nullable="false" />
+    <Property Name="ProductCategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductManufacturer">
+    <Key>
+      <PropertyRef Name="ProductManufacturerID" />
+    </Key>
+    <Property Name="ProductManufacturerID" Type="int" Nullable="false" />
+    <Property Name="ProductManufacturerName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductName">
+    <Key>
+      <PropertyRef Name="ProductNameID" />
+    </Key>
+    <Property Name="ProductNameID" Type="int" Nullable="false" />
+    <Property Name="ProductNameName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductSupplier">
+    <Key>
+      <PropertyRef Name="ProductSupplierID" />
+    </Key>
+    <Property Name="ProductSupplierID" Type="int" Nullable="false" />
+    <Property Name="ProductSupplierName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductUnit">
+    <Key>
+      <PropertyRef Name="ProductUnitID" />
+    </Key>
+    <Property Name="ProductUnitID" Type="int" Nullable="false" />
+    <Property Name="ProductUnitName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserRole" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserSurname" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserPatronymic" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserLogin" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="UserPassword" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "BumbleBeeLion.dbo.GetPickups" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="GetPickups">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="address" Type="nvarchar" MaxLength="220" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "BumbleBeeLion.dbo.LastOrderId" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="LastOrderId">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "BumbleBeeLion.dbo.NewOrderCode" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="NewOrderCode">
+          <Property Name="code" Type="int" />
+        </EntityType>-->
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "BumbleBeeLion.dbo.ProductRelationsView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="ProductRelationsView">
+    <Key>
+      <PropertyRef Name="Article" />
+      <PropertyRef Name="NameID" />
+      <PropertyRef Name="UnitID" />
+      <PropertyRef Name="CategoryID" />
+      <PropertyRef Name="SupplierID" />
+      <PropertyRef Name="ManufacturerID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="Category" />
+      <PropertyRef Name="Supplier" />
+      <PropertyRef Name="Manufacturer" />
+    </Key>
+    <Property Name="Article" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NameID" Type="int" Nullable="false" />
+    <Property Name="UnitID" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="SupplierID" Type="int" Nullable="false" />
+    <Property Name="ManufacturerID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Supplier" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "BumbleBeeLion.dbo.ProductView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="ProductView">
+    <Key>
+      <PropertyRef Name="ArticleNumber" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="Category" />
+      <PropertyRef Name="Supplier" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Description" />
+      <PropertyRef Name="Cost" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="Photo" />
+    </Key>
+    <Property Name="ArticleNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Supplier" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cost" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+    <Property Name="MaxDiscount" Type="tinyint" />
+    <Property Name="Discount" Type="tinyint" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Order__OrderPick__3B75D760">
+    <End Role="PickupPoint" Type="Self.PickupPoint" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PickupPoint">
+        <PropertyRef Name="PickupPointID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="OrderPickupPoint" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__OrderStat__3C69FB99">
+    <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderStatus">
+        <PropertyRef Name="OrderStatusID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="OrderStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderProd__Order__3D5E1FD2">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderProduct">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderProd__Produ__3E52440B">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductArticleNumber" />
+      </Principal>
+      <Dependent Role="OrderProduct">
+        <PropertyRef Name="ProductArticleNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Product__3F466844">
+    <End Role="ProductName" Type="Self.ProductName" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductName">
+        <PropertyRef Name="ProductNameID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Product__403A8C7D">
+    <End Role="ProductUnit" Type="Self.ProductUnit" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductUnit">
+        <PropertyRef Name="ProductUnitID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductUnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Product__412EB0B6">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ProductCategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Product__4222D4EF">
+    <End Role="ProductSupplier" Type="Self.ProductSupplier" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductSupplier">
+        <PropertyRef Name="ProductSupplierID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductSupplier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Product__4316F928">
+    <End Role="ProductManufacturer" Type="Self.ProductManufacturer" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductManufacturer">
+        <PropertyRef Name="ProductManufacturerID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductManufacturer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__UserRole__440B1D61">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище BumbleBeeLionModelContainer">
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PickupPoint" EntityType="Self.PickupPoint" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductManufacturer" EntityType="Self.ProductManufacturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductName" EntityType="Self.ProductName" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductSupplier" EntityType="Self.ProductSupplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductUnit" EntityType="Self.ProductUnit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GetPickups" EntityType="Self.GetPickups" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [GetPickups].[id] AS [id], 
+    [GetPickups].[address] AS [address]
+    FROM [dbo].[GetPickups] AS [GetPickups]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LastOrderId" EntityType="Self.LastOrderId" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LastOrderId].[id] AS [id]
+    FROM [dbo].[LastOrderId] AS [LastOrderId]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProductRelationsView" EntityType="Self.ProductRelationsView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ProductRelationsView].[Article] AS [Article], 
+    [ProductRelationsView].[NameID] AS [NameID], 
+    [ProductRelationsView].[UnitID] AS [UnitID], 
+    [ProductRelationsView].[CategoryID] AS [CategoryID], 
+    [ProductRelationsView].[SupplierID] AS [SupplierID], 
+    [ProductRelationsView].[ManufacturerID] AS [ManufacturerID], 
+    [ProductRelationsView].[Name] AS [Name], 
+    [ProductRelationsView].[Unit] AS [Unit], 
+    [ProductRelationsView].[Category] AS [Category], 
+    [ProductRelationsView].[Supplier] AS [Supplier], 
+    [ProductRelationsView].[Manufacturer] AS [Manufacturer]
+    FROM [dbo].[ProductRelationsView] AS [ProductRelationsView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProductView" EntityType="Self.ProductView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ProductView].[ArticleNumber] AS [ArticleNumber], 
+    [ProductView].[Name] AS [Name], 
+    [ProductView].[Unit] AS [Unit], 
+    [ProductView].[Category] AS [Category], 
+    [ProductView].[Supplier] AS [Supplier], 
+    [ProductView].[Manufacturer] AS [Manufacturer], 
+    [ProductView].[Description] AS [Description], 
+    [ProductView].[Cost] AS [Cost], 
+    [ProductView].[MaxDiscount] AS [MaxDiscount], 
+    [ProductView].[Discount] AS [Discount], 
+    [ProductView].[Quantity] AS [Quantity], 
+    [ProductView].[Photo] AS [Photo]
+    FROM [dbo].[ProductView] AS [ProductView]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Order__OrderPick__3B75D760" Association="Self.FK__Order__OrderPick__3B75D760">
+      <End Role="PickupPoint" EntitySet="PickupPoint" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__OrderStat__3C69FB99" Association="Self.FK__Order__OrderStat__3C69FB99">
+      <End Role="OrderStatus" EntitySet="OrderStatus" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderProd__Order__3D5E1FD2" Association="Self.FK__OrderProd__Order__3D5E1FD2">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderProduct" EntitySet="OrderProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderProd__Produ__3E52440B" Association="Self.FK__OrderProd__Produ__3E52440B">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderProduct" EntitySet="OrderProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Product__3F466844" Association="Self.FK__Product__Product__3F466844">
+      <End Role="ProductName" EntitySet="ProductName" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Product__403A8C7D" Association="Self.FK__Product__Product__403A8C7D">
+      <End Role="ProductUnit" EntitySet="ProductUnit" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Product__412EB0B6" Association="Self.FK__Product__Product__412EB0B6">
+      <End Role="ProductCategory" EntitySet="ProductCategory" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Product__4222D4EF" Association="Self.FK__Product__Product__4222D4EF">
+      <End Role="ProductSupplier" EntitySet="ProductSupplier" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Product__4316F928" Association="Self.FK__Product__Product__4316F928">
+      <End Role="ProductManufacturer" EntitySet="ProductManufacturer" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__UserRole__440B1D61" Association="Self.FK__User__UserRole__440B1D61">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

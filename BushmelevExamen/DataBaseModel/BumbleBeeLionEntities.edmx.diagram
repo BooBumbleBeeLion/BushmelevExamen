@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="87d3f23117e64d44b6ea89beac844b24" Name="Diagram1">
+        <EntityTypeShape EntityType="BumbleBeeLionModel.Order" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.OrderProduct" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.OrderStatus" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.PickupPoint" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.ProductCategory" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.ProductManufacturer" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.ProductName" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.ProductSupplier" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.ProductUnit" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.Role" Width="1.5" PointX="5.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.User" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.GetPickups" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.LastOrderId" Width="1.5" PointX="17.375" PointY="0.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.ProductRelationsView" Width="1.5" PointX="15.625" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="BumbleBeeLionModel.ProductView" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="BumbleBeeLionModel.FK__Order__OrderPick__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="BumbleBeeLionModel.FK__Order__OrderStat__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="BumbleBeeLionModel.FK__OrderProd__Order__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="BumbleBeeLionModel.FK__OrderProd__Produ__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="BumbleBeeLionModel.FK__Product__Product__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="BumbleBeeLionModel.FK__Product__Product__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="BumbleBeeLionModel.FK__Product__Product__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="BumbleBeeLionModel.FK__Product__Product__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="BumbleBeeLionModel.FK__Product__Product__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="BumbleBeeLionModel.FK__User__UserRole__440B1D61" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
